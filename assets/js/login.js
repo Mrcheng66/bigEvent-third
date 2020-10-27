@@ -9,7 +9,8 @@ $(function () {
     })
     // 表单验证
     var form = layui.form
-    console.log(form);
+    var layer = layui.layer
+    // console.log(form);
     form.verify({
         pass: [
             /^[\S]{6,12}$/
@@ -28,13 +29,35 @@ $(function () {
         $.ajax({
             type:'post',
             data:$(this).serialize(),
-            url:'http://ajax.frontend.itheima.net/api/reguser',
+            url:'/api/reguser',
             success:function(res) {
-                console.log(res);
+                // console.log(res);
                 if(res.status !==0) {
-                    layer.msg('注册失败')
+                  return  layer.msg('注册失败')
+                }
+                layer.msg('注册成功,请登录')
+                // 清空表单内容并跳转到登录页面
+                $('#reg_form')[0].reset()
+                $('#loginUser').trigger('click')
+            }
+        })
+    })
+    //登录页面
+    $('#login_form').on('submit',function (e) {
+        e.preventDefault();
+        $.ajax({
+            method:'post',
+            url:'/api/login',
+            data:$(this).serialize(),
+            success :function (res) {
+                console.log(res);
+                if(res.status !== 0) {
+                    return layer.msg(res.message)
                 }
                 layer.msg(res.message)
+                // 跳转到后台后属于内部地址 需要获取到用户的token 值才能访问所以讲token值保存到本地
+                localStorage.setItem('token',res.token)
+                location.href = '/index.html'
             }
         })
     })
