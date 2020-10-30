@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>layout 后台大布局 - Layui</title>
+    <title>大事件</title>
     <!-- 导入layui的css文件 -->
     <link rel="stylesheet" href="/assets/lib/layui/css/layui.css">
     <!-- 引入字体图标 -->
@@ -20,7 +20,7 @@
                 <img src="/assets/images/logo.png" alt="">
             </div>
             <!-- 头部区域（可配合layui已有的水平导航） -->
-            
+
             <ul class="layui-nav layui-layout-right">
                 <li class="layui-nav-item">
                     <a href="javascript:;">
@@ -30,12 +30,13 @@
                         个人中心
                     </a>
                     <dl class="layui-nav-child">
-                        <dd><a href="">更换头像</a></dd>
-                        <dd><a href="">重置密码</a></dd>
+                        <dd><a href="/user/user_info.html" target="ifm">基本资料</a></dd>
+                        <dd><a href="/user/user_avatar.html" target="ifm">更换头像</a></dd>
+                        <dd><a href="/user/user_pwd.html" target="ifm">重置密码</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item"><a href="JavaScript:;" id="loginOut">
-                    <span class="iconfont icon-tuichu"></span>退出</a></li>
+                        <span class="iconfont icon-tuichu"></span>退出</a></li>
             </ul>
         </div>
 
@@ -43,7 +44,7 @@
             <div class="layui-side-scroll">
                 <!-- 图标区域 -->
                 <div class="info">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img"/>
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img" />
                     <!-- 设置默认情况下字体的图标 -->
                     <span class="text-avatar">C</span>
                     <span id="welcome">****</span>
@@ -53,17 +54,17 @@
                 <ul class="layui-nav layui-nav-tree" lay-shrink="all" lay-filter="test">
                     <!-- target 设置的值与 iframe 的name值相同时则 a 链接跳转时候回在iframe的区域内打开 -->
                     <li class="layui-nav-item layui-this"><a href="/home/dashboard.html" target="ifm">
-                        <span class="iconfont icon-home"></span>首页</a></li>
+                            <span class="iconfont icon-home"></span>首页</a></li>
                     <li class="layui-nav-item">
                         <a href="javascript:;">
                             <span class="iconfont icon-16"></span>文章管理</a>
                         <dl class="layui-nav-child">
                             <dd><a href="javascript:;">
-                                <i class="layui-icon layui-icon-app"></i>文章类别</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>文章类别</a></dd>
                             <dd><a href="javascript:;">
-                                <i class="layui-icon layui-icon-app"></i>文章列表</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>文章列表</a></dd>
                             <dd><a href="">
-                                <i class="layui-icon layui-icon-app"></i>发表文章</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>发表文章</a></dd>
                         </dl>
                     </li>
                     <li class="layui-nav-item">
@@ -71,11 +72,11 @@
                             <span class="iconfont icon-user"></span>个人中心</a>
                         <dl class="layui-nav-child">
                             <dd><a href="/user/user_info.html" target="ifm">
-                                <i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
                             <dd><a href="/user/user_avatar.html" target="ifm">
-                                <i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
                             <dd><a href="/user/user_pwd.html" target="ifm">
-                                <i class="layui-icon layui-icon-app"></i>重置密码</a></dd>
+                                    <i class="layui-icon layui-icon-app"></i>重置密码</a></dd>
                         </dl>
                     </li>
                 </ul>
@@ -85,7 +86,7 @@
         <div class="layui-body">
             <!-- 内容主体区域 -->
             <!-- iframe 用于在结构内部嵌套其他内容 即只有该区域内容改变其他地方都不变 -->
-           <iframe src="/home/dashboard.html" frameborder="0" name="ifm"></iframe>
+            <iframe src="/home/dashboard.html" frameborder="0" name="ifm"></iframe>
         </div>
 
         <div class="layui-footer">
