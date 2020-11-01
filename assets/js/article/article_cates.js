@@ -50,6 +50,49 @@ $(function () {
             }
         })
     })
+
+    //编辑功能
+    var editindex;
+    $('tbody').on('click', '#btnEdit', function () {
+        editindex = layer.open({
+            type: '1',
+            area: ['500px', '260px'],
+            title: '修改文章分类',
+            content: $('#tpl_editArticle').html(),
+        });
+        //根据id获取文章分类数据,并将其填充到表单中
+        var id = $(this).attr('data-id')
+        $.ajax({
+            url: '/my/article/cates/' + id,
+            success: function (res) {
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                //layui中的表单赋值取值 方法
+                form.val('editRender', res.data)
+                // console.log(res);
+            }
+        })
+    })
+    //编辑后提交ajax
+    $('body').on('submit', '#formEdit', function (e) {
+        e.preventDefault()
+        $.ajax({
+            type: 'POST',
+            url: '/my/article/updatecate',
+            data:$(this).serialize(),
+            success: function (res) {
+                if (res.status !== 0) {
+                    return layer.msg(res.message)
+                }
+                layer.msg('编辑成功')
+                //关闭添加弹窗
+                layer.close(editindex);
+                //重新渲染表单
+                initArticle()
+            }
+        })
+    })
     //删除功能
     $('tbody').on('click','#btnDelete',function () {
         var id = $(this).data('id')
@@ -67,8 +110,7 @@ $(function () {
                     initArticle()
                 }
             })
-           
           });
-       
     })
+    //编辑功能
 })
